@@ -14,24 +14,27 @@ We advise two different endpoints, however, it is possible with only one as well
 
 ### Method
 
-POST
+`POST`
 
+## Step 1
 
 ### Scan the foreign QR
 
 Upon scanning a foreign QR code will identify it and hit your endpoint with the decoded value of the QR Code and the following query string parameters
 
 
+|Field| Description|
+| --- | -----------|
+|**Code** | The QR Code contents |
+|**businessId** | The iKentoo business identifier. A business can contain multiple business locations
+|**businessLocationId**| The site identifier for this business location
+|**tillId**| The ID of the POS which scanned the QR Code
 
-* **Code:** is the QR Code contents
-* **businessId:** is the iKentoo business identifier. A business can contain multiple business locations
-* **businessLocationId:** is the site identifier for this business
-* **tillId:** is the ID if the POS which scanned the QR Code
-
+## Step 2
 
 ### Respond
 
-Once the information is sent to your endpoint, your system will need to process the hit as quickly as possible (this directly impacts the customer experience at the POS) and return the following JSON in the request.
+Once the information is sent to your endpoint, your system will need to process the request as quickly as possible and return a JSON response with the following structure.
 
 
 ```
@@ -71,23 +74,22 @@ Once the information is sent to your endpoint, your system will need to process 
 	}
 }
 ```
+***
+
+#### Important Definitions:
 
 
-<span style="text-decoration:underline;">Important - Definitions</span>
 
+* In `thirdPartyConsumerReference`, you can put the `member ID`
+* Reward `rewardBasket` is optional
+* `rewardBasket` contains rewards applied to the current transaction.
+* `externalReference` is attached to the transaction (if the transaction is completed). You or the client can use this to reconcile with the financial data.
+* `displayMessage` is shown on the POS display as a modal view
+* `consumer` contains consumer details
+* top level `discountCode` is a discount applied to the who account/purchase
+* `productRewardList` is the list of items available for the reward
 
-
-* In thirdPartyConsumerReference, you can put the “member ID"
-* Reward basked is optional
-* rewardBasket contains rewards applied to the current transaction.
-* externalReference is attached to the transaction (if the transaction is completed). You or the client can use this to reconcile with the financial data.
-* displayMessage is show on the POS display as a modal view
-* consumer contains consumer info
-* top level discountCode is a discount applied to the who account/purchase
-* productRewardList: the list of items available for the reward
-
-most of those fields should be self-explanatory except for:
-
+Most of those fields should be self-explanatory except for:
 
 ```
 modifyItemIfFound
@@ -102,7 +104,7 @@ modifyItemIfFound
 
 In the above example, if SKU123 is found in the basket we will apply the discount with the code 10PCT to a single line with that SKU. If it’s not found we will first add it and then apply the discount.
 
-If modifyItemIfFound is false then we will not attempt to modify an existing item but we will ALWAYS add a new one with the discount if specified.
+If `modifyItemIfFound` is `false` then we will not attempt to modify an existing item but we will **always** add a new one with the discount if specified.
 
 
 ### Matching of the basket and the consumer
@@ -254,14 +256,3 @@ You can also respond with a discount and/or a product reward list and/or a displ
   "businessLocationId": 9148280340482
 }
 ```
-
-
-
-## Authentication
-
-At the moment we don’t have an authentication concept implemented.
-
-
-## Future developments
-
-We will also POST some JSON which will represent the current customer basket but this is not implemented yet, so for the time being you’ll receive an empty {} JSON body.

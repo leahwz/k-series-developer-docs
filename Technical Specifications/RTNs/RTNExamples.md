@@ -1,12 +1,16 @@
-## **Introduction**
+# Real Time Notifications
+
+
+## Introduction
 
 Below you will find examples of RTN payloads sent to configured webhooks.
 
 
-## **Examples:**
+### Examples:
 
+***
 
-### **Notification Type: OPEN**
+### Notification Type: OPEN
 
 
 ```
@@ -165,7 +169,7 @@ Below you will find examples of RTN payloads sent to configured webhooks.
 
 
 
-### **Notification Type: UPDATE**
+### Notification Type: UPDATE
 
 
 ```
