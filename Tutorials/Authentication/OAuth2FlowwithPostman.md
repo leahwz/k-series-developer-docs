@@ -9,7 +9,7 @@ The K-Series API uses OAuth2 to authenticate API users. Below you will find step
 
 * Make sure you have [Postman](https://www.postman.com/downloads/) installed.
 
-* To request a new API client, you must fill out the following form: [https://forms.monday.com/forms/7f68bc61ebf1488faa1948ad3ec6b7fb](https://forms.monday.com/forms/7f68bc61ebf1488faa1948ad3ec6b7fb)
+* To request a new API client, please contact your Technical Partner Manager
 
 * If you are connecting to an account on staging, your base URL should be:
 
