@@ -46,7 +46,7 @@ https://api.lsk.lightspeed.app/oauth/authorize?client_id={{CLIENT_ID_HERE}}&resp
 
 ***
 
-2. The user will log in and accept the scope(s) requested for your client. Your redirect URI will then be called with the authorization code in parameter, like this:
+2.  The user will log in and accept the scope(s) requested for your client. We will then call your redirect URL with the authorization code in parameter, like this:
 
 
   ```
@@ -88,7 +88,7 @@ STAGING: https://api.trial.lsk.lightspeed.app/oauth/token
 Authorization: Basic + {clientId:clientSecret encoded in base 64}
 ```
 
-The authorization headers should look like this:
+The authorization headers should look something like this:
 
 
 ![Step 5](step5.png "step5")

@@ -1,37 +1,87 @@
-/**
- * Represents the error received after executing a native function.
- *
- * @typedef {Object} posError
- * @property {string} message A description of the error.
- */
+## Web Extension Functions
 
-/**
- * Represents the data received after executing a native function.
- *
- * @typedef {*} posData
- */
+Web Extensions provide a way for integrators to interact with a sale by launching a browser window inside of the POS app and providing a JavaScript context to the page so that it can modify the current sale.
+<br>
 
-/**
- * Represents the response received after executing a native function.
- *
- * @typedef {Object} posResponse
- * @property {?posError} posResponse.error
- * @property {?posData} posResponse.data
- */
 
-/**
- * Callback invoked in an asynchronous manner after executing a native function.
- *
- * @callback posCallback
- * @param {posResponse} response Contains the result of executing a native function.
- */
 
-/** @type {Object.<string, posCallback>} */
+<br>
+
+```
+EXAMPLE
+```
+
+Represents the error received after executing a native function:
+ * `@typedef {Object} posError`
+ * `@property {string} message`
+
+ A description of the error.
+
+ <br>
+
+ ***
+
+ <br>
+
+ ```
+ EXAMPLE
+ ```
+
+Represents the data received after executing a native function:
+
+ * `@typedef {*} posData`
+
+ <br>
+
+ ***
+
+ <br>
+
+ ```
+ EXAMPLE
+ ```
+Represents the response received after executing a native function:
+
+* `@typedef {Object} posResponse`
+* `@property {?posError} posResponse.error`
+* `@property {?posData} posResponse.data`
+
+<br>
+
+***
+
+<br>
+
+```
+EXAMPLE
+```
+
+Callback invoked in an asynchronous manner after executing a native function:
+
+ * `@callback posCallback`
+ * `@param {posResponse} response`
+
+ Contains the result of executing a native function.
+
+ <br>
+
+ ***
+
+ <br>
+
+```
 const callbacks = {}
+```
 
-/**
- * Closes the web view hosted in the POS app.
- */
+* `@type {Object.<string, posCallback>}`
+
+<br>
+
+***
+
+<br>
+
+```
 function pos_close() {
     const data = {
         name : 'close',
@@ -40,10 +90,16 @@ function pos_close() {
 
     pos_postMessage(data)
 }
+```
+Closes the web view hosted in the POS app.
 
-/**
- * Hides the button that closes the web view hosted in the POS app.
- */
+<br>
+
+***
+
+<br>
+
+ ```
 function pos_disableCloseButton() {
     const data = {
         name : 'disableCloseButton',
@@ -53,9 +109,16 @@ function pos_disableCloseButton() {
     pos_postMessage(data)
 }
 
-/**
- * Opens the configured drawer.
- */
+```
+Hides the button that closes the web view hosted in the POS app.
+
+<br>
+
+***
+
+<br>
+
+```
 function pos_openDrawer() {
     const data = {
         name : 'openDrawer',
@@ -64,10 +127,17 @@ function pos_openDrawer() {
 
     pos_postMessage(data)
 }
+```
+Opens the configured drawer.
 
-/**
- * Forces a commit on the current account.
- */
+<br>
+
+***
+
+<br>
+
+```
+
 function pos_forceCommitCurrentAccount() {
     const data = {
         name : 'forceCommitCurrentAccount',
@@ -76,10 +146,16 @@ function pos_forceCommitCurrentAccount() {
 
     pos_postMessage(data)
 }
+```
+Forces a commit on the current account.
 
-/**
- * Commits the current account.
- */
+<br>
+
+***
+
+<br>
+
+```
 function pos_commitCurrentAccount() {
     const data = {
         name : 'commitCurrentAccount',
@@ -88,12 +164,16 @@ function pos_commitCurrentAccount() {
 
     pos_postMessage(data)
 }
+```
+Commits the current account.
 
-/**
- * Loads an account identified by the specified number.
- *
- * @param {string} number Reference number used to identify the account to load.
- */
+<br>
+
+***
+
+<br>
+
+```
 function pos_loadAccountForNumber(number) {
     const data = {
         name : 'loadAccountForNumber',
@@ -102,12 +182,21 @@ function pos_loadAccountForNumber(number) {
 
     pos_postMessage(data)
 }
+```
 
-/**
- * Loads an account identified by the specified name.
- *
- * @param {string} name Reference name used to identify the account to load.
- */
+Loads an account identified by the specified number.
+
+* `@param {string} number`
+
+  Reference number used to identify the account to load.
+
+<br>
+
+***
+
+<br>
+
+```
 function pos_loadAccountForName(name) {
     const data = {
         name : 'loadAccountForName',
@@ -116,12 +205,21 @@ function pos_loadAccountForName(name) {
 
     pos_postMessage(data)
 }
+```
 
-/**
- * Prints out the specified text.
- *
- * @param {string} text The text to print out.
- */
+Loads an account identified by the specified name.
+
+* `@param {string} name`
+
+  Reference name used to identify the account to load.
+
+<br>
+
+***
+
+<br>
+
+```
 function pos_printText(text) {
     const data = {
         name : 'printText',
@@ -130,13 +228,21 @@ function pos_printText(text) {
 
     pos_postMessage(data)
 }
+```
 
-/**
- * Adds an external reference with the specified prefix.
- *
- * @param {string} reference The reference to add.
- * @param {string} prefix The prefix to concatenate.
- */
+ Prints out the specified text.
+
+* `@param {string} text`
+
+  The text to print out.
+
+<br>
+
+***
+
+<br>
+
+```
 function pos_addExternalReference(reference, prefix) {
     const data = {
         name : 'addExternalReference',
@@ -145,12 +251,24 @@ function pos_addExternalReference(reference, prefix) {
 
     pos_postMessage(data)
 }
+```
 
-/**
- * Changes the profile of the current account.
- *
- * @param {string} accountProfileCode Reference code used to identify the account profile.
- */
+Adds an external reference with the specified prefix.
+
+ * `@param {string} reference`
+
+  The reference to add.
+ * `@param {string} prefix`
+
+  The prefix to concatenate.
+
+ <br>
+
+ ***
+
+ <br>
+
+```
 function pos_changeAccountProfile(accountProfileCode) {
     const data = {
         name : 'changeAccountProfile',
@@ -159,12 +277,21 @@ function pos_changeAccountProfile(accountProfileCode) {
 
     pos_postMessage(data)
 }
+```
 
-/**
- * Adds the specified item to the current account.
- *
- * @param {string} itemId Reference identifier used to identify the item to add.
- */
+Changes the profile of the current account.
+
+ * `@param {string} accountProfileCode`
+
+  Reference code used to identify the account profile.
+
+ <br>
+
+ ***
+
+ <br>
+
+```
 function pos_addItemToCurrentAccount(itemId) {
     const data = {
         name : 'addItemToCurrentAccount',
@@ -173,14 +300,22 @@ function pos_addItemToCurrentAccount(itemId) {
 
     pos_postMessage(data)
 }
+```
 
-/**
- * Adds the specified special item to the current account.
- *
- * @param {string} itemId Reference identifier used to identify the item to add.
- * @param {number} priceCents The price of the item to add in cents.
- * @param {string} name The name of the item to add.
- */
+ Adds the specified item to the current account.
+
+ * `@param {string} itemId`
+
+  Reference identifier used to identify the item to add.
+
+
+ <br>
+
+ ***
+
+ <br>
+
+```
 function pos_addSpecialItemToCurrentAccount(itemId, priceCents, name) {
     const data = {
         name : 'addSpecialItemToCurrentAccount',
@@ -189,13 +324,27 @@ function pos_addSpecialItemToCurrentAccount(itemId, priceCents, name) {
 
     pos_postMessage(data)
 }
+```
+Adds the specified special item to the current account.
 
-/**
- * Stores data in the POS app's defaults using the specified key.
- *
- * @param {string} key The key to use to store the data.
- * @param {string} value The data to store.
- */
+ * `@param {string} itemId`
+
+  Reference identifier used to identify the item to add.
+ * `@param {number} priceCents`
+
+  The price of the item to add in cents.
+ * `@param {string} name`
+
+  The name of the item to add.
+
+
+ <br>
+
+ ***
+
+ <br>
+
+```
 function pos_storeData(key, value) {
     const data = {
         name : 'storeData',
@@ -204,98 +353,160 @@ function pos_storeData(key, value) {
 
     pos_postMessage(data)
 }
+```
+Stores data in the POS app's defaults using the specified key.
 
-/**
- * Loads data from the POS app's defaults using the specified key.
- *
- * @param {string} key The key to use to retrieve the data.
- * @param {posCallback} callback The callback that'll be invoked when the native function is done executing.
- */
-function pos_loadData(key, callback) {
-    const callbackId = pos_generateCallbackId()
-    callbacks[callbackId] = callback
+ * `@param {string} key`
 
-    const data = {
-        name : 'loadData',
-        args : { key, callbackId }
-    }
+  The key to use to store the data.
+ * `@param {string} value`
 
-    pos_postMessage(data)
-}
+  The data to store.
 
-/**
- * Sets the specified covers to the current account.
- *
- * @param {number} coversPow2 The covers to set.
- */
-function pos_setCurrentAccountCovers(coversPow2) {
-    const data = {
-        name : 'setCurrentAccountCovers',
-        args : { coversPow2 }
-    }
+ <br>
 
-    pos_postMessage(data)
-}
+ ***
 
-/**
- * Fetches the POS app's version number.
- *
- * @param {posCallback} callback The callback that'll be invoked when the native function is done executing.
- */
-function pos_getVersion(callback) {
-    const callbackId = pos_generateCallbackId()
-    callbacks[callbackId] = callback
+ <br>
 
-    const data = {
-        name : 'getVersion',
-        args : { callbackId }
-    }
+ ```
+ function pos_loadData(key, callback) {
+     const callbackId = pos_generateCallbackId()
+     callbacks[callbackId] = callback
 
-    pos_postMessage(data)
-}
+     const data = {
+         name : 'loadData',
+         args : { key, callbackId }
+     }
 
-/**
- * Adds a payment to the current account.
- *
- * @param {number} amountCents The amount of the payment in cents.
- * @param {string} paymentMethodCode Reference code used to identify the payment method to use when adding the payment.
- * @param {posCallback} callback The callback that'll be invoked when the native function is done executing.
- */
-function pos_addPayment(amountCents, paymentMethodCode, callback) {
-    const callbackId = pos_generateCallbackId()
-    callbacks[callbackId] = callback
+     pos_postMessage(data)
+ }
+ ```
+Loads data from the POS app's defaults using the specified key.
 
-    const data = {
-        name : 'addPayment',
-        args : { amountCents, paymentMethodCode, callbackId }
-    }
+ * `@param {string} key`
 
-    pos_postMessage(data)
-}
+  The key to use to retrieve the data.
+ * `@param {posCallback} callback`
 
-/**
- * Pays for the current account.
- *
- * @param {string} paymentMethodCode Reference code used to identify the payment method to use when paying for the current account.
- * @param {posCallback} callback The callback that'll be invoked when the native function is done executing.
- */
-function pos_payAccount(paymentMethodCode, callback) {
-    const callbackId = pos_generateCallbackId()
-    callbacks[callbackId] = callback
+  The callback that will be invoked when the native function is done executing.
 
-    const data = {
-        name : 'payAccount',
-        args : { paymentMethodCode, callbackId }
-    }
+ <br>
 
-    pos_postMessage(data)
-}
+ ***
 
-/**
- * Fetches the current account.
- *
- * @param {posCallback} callback The callback that'll be invoked when the native function is done executing.
- */
+ <br>
+
+ ```
+ function pos_setCurrentAccountCovers(coversPow2) {
+     const data = {
+         name : 'setCurrentAccountCovers',
+         args : { coversPow2 }
+     }
+
+     pos_postMessage(data)
+ }
+ ```
+Sets the specified covers to the current account.
+
+ * `@param {number} coversPow2`
+
+  The covers to set.
+
+ <br>
+
+ ***
+
+ <br>
+
+ ```
+ function pos_getVersion(callback) {
+     const callbackId = pos_generateCallbackId()
+     callbacks[callbackId] = callback
+
+     const data = {
+         name : 'getVersion',
+         args : { callbackId }
+     }
+
+     pos_postMessage(data)
+ }
+ ```
+
+Fetches the POS app's version number.
+
+ * `@param {posCallback} callback`
+
+  The callback that will be invoked when the native function is done executing.
+
+ <br>
+
+ ***
+
+ <br>
+
+ ```
+ function pos_addPayment(amountCents, paymentMethodCode, callback) {
+     const callbackId = pos_generateCallbackId()
+     callbacks[callbackId] = callback
+
+     const data = {
+         name : 'addPayment',
+         args : { amountCents, paymentMethodCode, callbackId }
+     }
+
+     pos_postMessage(data)
+ }
+ ```
+
+Adds a payment to the current account.
+
+ * `@param {number} amountCents`
+
+  The amount of the payment in cents.
+ * `@param {string} paymentMethodCode`
+
+  Reference code used to identify the payment method to use when adding the payment.
+ * `@param {posCallback} callback`
+
+  The callback that will be invoked when the native function is done executing.
+
+
+ <br>
+
+ ***
+
+ <br>
+
+ ```
+ function pos_payAccount(paymentMethodCode, callback) {
+     const callbackId = pos_generateCallbackId()
+     callbacks[callbackId] = callback
+
+     const data = {
+         name : 'payAccount',
+         args : { paymentMethodCode, callbackId }
+     }
+
+     pos_postMessage(data)
+ }
+```
+Pays for the current account.
+
+ * `@param {string} paymentMethodCode`
+
+  Reference code used to identify the payment method to use when paying for the current account.
+ * `@param {posCallback} callback`
+
+  The callback that will be invoked when the native function is done executing.
+
+ <br>
+
+ ***
+
+ <br>
+
+```
 function pos_getCurrentAccount(callback) {
     const callbackId = pos_generateCallbackId()
     callbacks[callbackId] = callback
@@ -307,31 +518,46 @@ function pos_getCurrentAccount(callback) {
 
     pos_postMessage(data)
 }
+```
+Fetches the current account.
 
-/**
- * Fetches the currently configured available discounts.
- *
- * @param {posCallback} callback The callback that'll be invoked when the native function is done executing.
- */
-function pos_getAvailableDiscounts(callback) {
-    const callbackId = pos_generateCallbackId()
-    callbacks[callbackId] = callback
+ * `@param {posCallback} callback`
 
-    const data = {
-        name : 'getAvailableDiscounts',
-        args : { callbackId }
-    }
+ The callback that will be invoked when the native function is done executing.
 
-    pos_postMessage(data)
-}
+ <br>
 
-/**
- * Toggles the specified discount on the specified line.
- *
- * @param {string} discountCode Reference code used to identify the discount to toggle.
- * @param {string} lineId Reference identifier used to identify the line containing the discount.
- * @param {posCallback} callback The callback that'll be invoked when the native function is done executing.
- */
+ ***
+
+ <br>
+
+ ```
+ function pos_getAvailableDiscounts(callback) {
+     const callbackId = pos_generateCallbackId()
+     callbacks[callbackId] = callback
+
+     const data = {
+         name : 'getAvailableDiscounts',
+         args : { callbackId }
+     }
+
+     pos_postMessage(data)
+ }
+
+ ```
+Fetches the currently configured available discounts.
+
+ * `@param {posCallback} callback`
+
+ The callback that will be invoked when the native function is done executing.
+
+ <br>
+
+ ***
+
+ <br>
+
+ ```
 function pos_toggleDiscount(discountCode, lineId, callback) {
     const callbackId = pos_generateCallbackId()
     callbacks[callbackId] = callback
@@ -343,55 +569,96 @@ function pos_toggleDiscount(discountCode, lineId, callback) {
 
     pos_postMessage(data)
 }
+ ```
+Toggles the specified discount on the specified line.
 
-/**
- * Toggles the specified global discount.
- *
- * @param {string} discountCode Reference code used to identify the discount to toggle.
- * @param {posCallback} callback The callback that'll be invoked when the native function is done executing.
- */
-function pos_toggleGlobalDiscount(discountCode, callback) {
-    const callbackId = pos_generateCallbackId()
-    callbacks[callbackId] = callback
+ * `@param {string} discountCode`
 
-    const data = {
-        name : 'toggleGlobalDiscount',
-        args : { discountCode, callbackId }
-    }
+ Reference code used to identify the discount to toggle.
+ * `@param {string} lineId`
 
-    pos_postMessage(data)
-}
+ Reference identifier used to identify the line containing the discount.
+ * `@param {posCallback} callback`
 
-/**
- * Sets the consumer for the current account.
- *
- * @param {Object} consumer The consumer object to set.
- */
-function pos_setConsumer(consumer) {
-    const data = {
-        name : 'setConsumer',
-        args : { consumer }
-    }
+ The callback that will be invoked when the native function is done executing.
 
-    pos_postMessage(data)
-}
+ <br>
 
-/**
- * Sends a message to the POS app in order to execute some function or relay some information.
- *
- * @param {Object} data Object containing information relevant to the message.
- */
+ ***
+
+ <br>
+
+ ```
+ function pos_toggleGlobalDiscount(discountCode, callback) {
+     const callbackId = pos_generateCallbackId()
+     callbacks[callbackId] = callback
+
+     const data = {
+         name : 'toggleGlobalDiscount',
+         args : { discountCode, callbackId }
+     }
+
+     pos_postMessage(data)
+ }
+ ```
+Toggles the specified global discount.
+
+ * `@param {string} discountCode`
+
+ Reference code used to identify the discount to toggle.
+ * `@param {posCallback} callback`
+
+ The callback that will be invoked when the native function is done executing.
+
+ <br>
+
+ ***
+
+ <br>
+
+ ```
+ function pos_setConsumer(consumer) {
+     const data = {
+         name : 'setConsumer',
+         args : { consumer }
+     }
+
+     pos_postMessage(data)
+ }
+ ```
+
+Sets the consumer for the current account.
+
+ * `@param {Object} consumer`
+
+ The consumer object to set.
+
+ <br>
+
+ ***
+
+ <br>
+
+```
 function pos_postMessage(data) {
     try { window.webkit.messageHandlers.functionMessageHandler.postMessage(data) }
     catch (error) { console.log(error) }
 }
+```
 
-/**
- * Invokes the specified callback with the received data.
- *
- * @param {string} callbackId The identifier of the callback to invoke.
- * @param {*} data The data received after a successful native function execution.
- */
+Sends a message to the POS app in order to execute some function or relay some information.
+
+ * `@param {Object} data`
+
+ Object containing information relevant to the message.
+
+ <br>
+
+ ***
+
+ <br>
+
+```
 function pos_relaySuccessfulFunctionExecution(callbackId, data) {
     const callback = callbacks[callbackId]
     const response = { error: null, data }
@@ -406,40 +673,73 @@ function pos_relaySuccessfulFunctionExecution(callbackId, data) {
     callback(response)
     delete callbacks[callbackId]
 }
+```
+Invokes the specified callback with the received data.
 
-/**
- * Invokes the specified callback with the received error message.
- *
- * @param {string} callbackId The identifier of the callback to invoke.
- * @param {string} errorMessage The error message received after a failed native function execution.
- */
+ * `@param {string} callbackId`
+
+ The identifier of the callback to invoke.
+
+ * `@param {*} data`
+
+ The data received after a successful native function execution.
+
+
+ <br>
+
+ ***
+
+ <br>
+
+```
+
 function pos_relayFailedFunctionExecution(callbackId, errorMessage) {
-    const callback = callbacks[callbackId]
-    const response = { error: { message: errorMessage }, data: null }
+   const callback = callbacks[callbackId]
+   const response = { error: { message: errorMessage }, data: null }
 
-    callback(response)
-    delete callbacks[callbackId]
+   callback(response)
+   delete callbacks[callbackId]
 }
+```
 
-// Taken from https://stackoverflow.com/questions/105034/how-to-create-guid-uuid/2117523#2117523.
+Invokes the specified callback with the received error message.
 
-/**
- * Generates a valid UUID.
- *
- * @returns {string} A valid UUID.
- */
+ * `@param {string} callbackId`
+
+ The identifier of the callback to invoke.
+ * `@param {string} errorMessage`
+
+ The error message received after a failed native function execution.
+
+
+ <br>
+
+ ***
+
+ <br>
+
+```
 function pos_generateUUIDV4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8)
       return v.toString(16)
     })
 }
+```
 
-/**
- * Generates a unique callback identifier.
- *
- * @returns {string} A unique identifier.
- */
+Generates a valid UUID.
+
+ * `@returns {string}`
+
+ A valid UUID.
+
+ <br>
+
+ ***
+
+ <br>
+
+```
 function pos_generateCallbackId() {
     let uuid = pos_generateUUIDV4()
 
@@ -449,3 +749,10 @@ function pos_generateCallbackId() {
 
     return uuid
 }
+```
+
+Generates a unique callback identifier.
+
+ * `@returns {string}`
+
+ A unique identifier.

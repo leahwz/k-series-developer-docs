@@ -6,7 +6,7 @@
 
 In order for you to start testing, you will need to provide us with an endpoint to which we can send the contents of the scanned QR Code.
 
-We advise two different endpoints, however, it is possible with only one as well. In that case and at the moment of the scan, a query parameter needs to be set up with the value “code”.
+It is preferable that you use two different endpoints, however, it is possible to use only one. In that case and at the moment of the scan, a query parameter needs to be set up with the value “code”.
 
 
 ## Process
@@ -20,7 +20,7 @@ We advise two different endpoints, however, it is possible with only one as well
 
 ### Scan the foreign QR
 
-Upon scanning a foreign QR code will identify it and hit your endpoint with the decoded value of the QR Code and the following query string parameters
+Upon scanning a foreign QR code will identify it and hit your endpoint with the decoded value of the QR Code and the following query string parameters:
 
 
 |Field| Description|
