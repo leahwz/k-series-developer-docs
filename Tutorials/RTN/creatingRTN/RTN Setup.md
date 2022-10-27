@@ -20,7 +20,7 @@ https://webhook.site/
 3. Once logged in to your dashboard, navigate to:<br/><br/>
 
 ```
-TRIAL: https://manager-trial.lsk.lightspeed.app/configuration/editRealtimeNotification
+TRIAL: https://manager.trial.lsk.lightspeed.app/configuration/editRealtimeNotification
 PROD: https://manager.lsk.lightspeed.app/configuration/editRealtimeNotification
 ```
 <br/>
