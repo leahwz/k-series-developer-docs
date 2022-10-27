@@ -20,8 +20,8 @@ https://webhook.site/
 3. Once logged in to your dashboard, navigate to:<br/><br/>
 
 ```
-TRIAL: https://console-trial.ikentoo.com/configuration/realtimeNotifications
-PROD: https://console.ikentoo.com/configuration/realtimeNotifications
+TRIAL: https://manager-trial.lsk.lightspeed.app/configuration/editRealtimeNotification
+PROD: https://manager.lsk.lightspeed.app/configuration/editRealtimeNotification
 ```
 <br/>
 
